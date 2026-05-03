@@ -5,19 +5,17 @@
   <meta name="description" content="Neon Terra Cybernetics — premium secure workspace prototype." />
   <title>Neon Terra Cybernetics</title>  <!-- Fonts -->  <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">  <!-- Tailwind CDN for rapid layout; custom styling will live in styles.css -->  <script src="https://cdn.tailwindcss.com"></script>  <!-- External stylesheet -->  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">  <!-- Tailwind CDN for rapid layout; custom styling lives in styles.css -->  <script src="https://cdn.tailwindcss.com"></script>  <!-- External stylesheet -->  <link rel="stylesheet" href="styles.css" />
 </head>
 <body class="min-h-screen bg-black text-white antialiased overflow-x-hidden">
-  <!-- App Shell -->
   <div id="app" class="min-h-screen relative">
-    <!-- Background layers -->
     <div class="fixed inset-0 app-bg"></div>
     <div class="fixed inset-0 noise-overlay pointer-events-none"></div><!-- Top Brand Bar -->
-<header class="relative z-10 px-4 sm:px-6 lg:px-8 pt-5">
+<header class="relative z-30 px-4 sm:px-6 lg:px-8 pt-5">
   <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
     <button id="logoButton" class="flex items-center gap-3 group" type="button" aria-label="Neon Terra Cybernetics logo">
       <div class="logo-mark">
-        <span class="logo-mark__inner">NT</span>
+        <img src="assets/images/logo.png" alt="Neon Terra Cybernetics logo" class="logo-mark__img" />
       </div>
       <div class="text-left">
         <div class="text-sm sm:text-base font-semibold tracking-[0.22em] uppercase">Neon Terra</div>
@@ -33,10 +31,9 @@
   </div>
 </header>
 
-<!-- Main Content -->
+<!-- Main Views -->
 <main class="relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
   <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-8 xl:gap-12 items-center">
-    <!-- Hero / Marketing Panel -->
     <section class="space-y-6 lg:pr-8">
       <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-100 text-xs sm:text-sm">
         <span class="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.9)]"></span>
@@ -105,7 +102,7 @@
               <input id="email" name="email" type="email" class="form-input" placeholder="name@example.com" autocomplete="email" />
             </div>
 
-            <div class="form-group" id="confirmPasswordGroup" hidden>
+            <div class="form-group hidden" id="confirmPasswordGroup">
               <label class="form-label" for="confirmPassword">Confirm password</label>
               <input id="confirmPassword" name="confirmPassword" type="password" class="form-input" placeholder="Repeat your password" autocomplete="new-password" />
             </div>
@@ -174,7 +171,130 @@
   </div>
 </main>
 
-  </div>  <!-- Minimal placeholder containers for next steps --><template id="disclaimerTemplate"></template> <template id="pricingTemplate"></template> <template id="paymentTemplate"></template> <template id="dashboardTemplate"></template>
+<!-- Hidden App Screens for Next Steps -->
+<section id="dashboardView" class="hidden-view" aria-hidden="true">
+  <div class="dashboard-shell">
+    <aside class="dashboard-sidebar">
+      <div class="dashboard-sidebar__brand">
+        <div class="logo-mark logo-mark--small">
+          <img src="assets/images/logo.png" alt="Neon Terra Cybernetics logo" class="logo-mark__img" />
+        </div>
+        <div>
+          <div class="text-sm font-semibold tracking-[0.2em] uppercase">Command Center</div>
+          <div class="text-[11px] text-cyan-200/60 tracking-[0.2em] uppercase">Active Workspace</div>
+        </div>
+      </div>
+      <nav class="dashboard-nav">
+        <button class="dashboard-nav__item dashboard-nav__item--active">Overview</button>
+        <button class="dashboard-nav__item">Membership</button>
+        <button class="dashboard-nav__item">Activity</button>
+        <button class="dashboard-nav__item">Notices</button>
+        <button class="dashboard-nav__item">Support</button>
+        <button class="dashboard-nav__item">Settings</button>
+      </nav>
+    </aside>
 
-  <!-- External JS -->  <script src="script.js"></script></body>
+    <div class="dashboard-main">
+      <div class="dashboard-topbar">
+        <div>
+          <div class="dashboard-kicker">Approved Dashboard</div>
+          <h2 class="dashboard-title">Command Center</h2>
+        </div>
+        <div class="dashboard-profile">
+          <span class="status-chip status-chip--approved">Approved</span>
+          <span class="profile-pill">NTC-USER</span>
+        </div>
+      </div>
+
+      <div class="dashboard-grid">
+        <article class="dashboard-card">
+          <div class="dashboard-card__label">Security Score</div>
+          <div class="dashboard-card__value">92%</div>
+          <div class="dashboard-card__meta">Healthy access posture</div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card__label">Plan</div>
+          <div class="dashboard-card__value">Elite</div>
+          <div class="dashboard-card__meta">Priority review queue</div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card__label">Last Review</div>
+          <div class="dashboard-card__value">Today</div>
+          <div class="dashboard-card__meta">Manual approval complete</div>
+        </article>
+        <article class="dashboard-card">
+          <div class="dashboard-card__label">Notifications</div>
+          <div class="dashboard-card__value">3</div>
+          <div class="dashboard-card__meta">New updates available</div>
+        </article>
+      </div>
+
+      <div class="dashboard-panels">
+        <section class="dashboard-panel">
+          <div class="panel-head">
+            <h3>Activity Timeline</h3>
+            <span class="panel-badge">Live</span>
+          </div>
+          <ul class="timeline-list">
+            <li><span>01</span> Login completed</li>
+            <li><span>02</span> Disclaimer accepted</li>
+            <li><span>03</span> Payment submitted</li>
+            <li><span>04</span> Admin approved</li>
+            <li><span>05</span> Workspace unlocked</li>
+          </ul>
+        </section>
+
+        <section class="dashboard-panel dashboard-panel--vip">
+          <div class="panel-head">
+            <h3>VIP DFY Service</h3>
+            <span class="panel-badge panel-badge--gold">₹15,000</span>
+          </div>
+          <div class="vip-card-locked">
+            <div class="vip-card-locked__title">Exclusive Access Required</div>
+            <p>Premium concierge-style workspace with priority guidance and advanced support tools.</p>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="adminView" class="hidden-view" aria-hidden="true">
+  <div class="admin-shell">
+    <div class="admin-header">
+      <h2>Admin Review Center</h2>
+      <p>Review pending requests, inspect images, and approve or reject access.</p>
+    </div>
+    <div class="admin-metrics">
+      <div class="admin-metric">Pending <strong>0</strong></div>
+      <div class="admin-metric">Approved Today <strong>0</strong></div>
+      <div class="admin-metric">Rejected Today <strong>0</strong></div>
+      <div class="admin-metric">Total Value <strong>₹0</strong></div>
+    </div>
+    <div class="admin-table-wrap">
+      <table class="admin-table">
+        <thead>
+          <tr>
+            <th>User</th>
+            <th>Plan</th>
+            <th>UTR</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="adminTableBody">
+          <tr>
+            <td colspan="5" class="admin-empty">No requests yet.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Modal Shells -->
+<div id="modalRoot"></div>
+<div id="toastRoot" class="toast-root" aria-live="polite" aria-atomic="true"></div>
+
+  </div>  <script src="script.js"></script></body>
 </html>
