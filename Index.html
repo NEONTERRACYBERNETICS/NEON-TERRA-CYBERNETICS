@@ -1,0 +1,180 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Neon Terra Cybernetics — premium secure workspace prototype." />
+  <title>Neon Terra Cybernetics</title>  <!-- Fonts -->  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">  <!-- Tailwind CDN for rapid layout; custom styling will live in styles.css -->  <script src="https://cdn.tailwindcss.com"></script>  <!-- External stylesheet -->  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="min-h-screen bg-black text-white antialiased overflow-x-hidden">
+  <!-- App Shell -->
+  <div id="app" class="min-h-screen relative">
+    <!-- Background layers -->
+    <div class="fixed inset-0 app-bg"></div>
+    <div class="fixed inset-0 noise-overlay pointer-events-none"></div><!-- Top Brand Bar -->
+<header class="relative z-10 px-4 sm:px-6 lg:px-8 pt-5">
+  <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+    <button id="logoButton" class="flex items-center gap-3 group" type="button" aria-label="Neon Terra Cybernetics logo">
+      <div class="logo-mark">
+        <span class="logo-mark__inner">NT</span>
+      </div>
+      <div class="text-left">
+        <div class="text-sm sm:text-base font-semibold tracking-[0.22em] uppercase">Neon Terra</div>
+        <div class="text-[11px] sm:text-xs text-cyan-200/70 tracking-[0.28em] uppercase">Cybernetics</div>
+      </div>
+    </button>
+
+    <div class="hidden md:flex items-center gap-3 text-xs text-white/60">
+      <span class="chip">Secure Access</span>
+      <span class="chip">Private Workspace</span>
+      <span class="chip">Verified Members</span>
+    </div>
+  </div>
+</header>
+
+<!-- Main Content -->
+<main class="relative z-10 px-4 sm:px-6 lg:px-8 py-8 sm:py-12 lg:py-16">
+  <div class="max-w-7xl mx-auto grid lg:grid-cols-[1.05fr_0.95fr] gap-8 xl:gap-12 items-center">
+    <!-- Hero / Marketing Panel -->
+    <section class="space-y-6 lg:pr-8">
+      <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-cyan-400/20 bg-cyan-400/5 text-cyan-100 text-xs sm:text-sm">
+        <span class="h-2 w-2 rounded-full bg-cyan-300 shadow-[0_0_18px_rgba(34,211,238,0.9)]"></span>
+        Premium secured workspace
+      </div>
+
+      <div class="space-y-4">
+        <h1 class="text-4xl sm:text-5xl xl:text-6xl font-extrabold leading-[1.02] tracking-tight">
+          Secure, premium access for a modern cyber workspace.
+        </h1>
+        <p class="max-w-2xl text-sm sm:text-base lg:text-lg text-white/70 leading-7">
+          Neon Terra Cybernetics is designed as a polished, enterprise-style access portal with guided verification, multi-language support, and a responsive member-first experience.
+        </p>
+      </div>
+
+      <div class="grid sm:grid-cols-3 gap-3 max-w-2xl">
+        <div class="info-card">
+          <div class="info-card__label">Trust</div>
+          <div class="info-card__value">Manual Review</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card__label">Access</div>
+          <div class="info-card__value">Private Workspace</div>
+        </div>
+        <div class="info-card">
+          <div class="info-card__label">Support</div>
+          <div class="info-card__value">Priority Queue</div>
+        </div>
+      </div>
+
+      <div class="hidden lg:block pt-2 text-sm text-white/55 max-w-xl">
+        Choose your region and language, then sign in or create a workspace. The UI will later connect to pricing, payment, admin review, and dashboard states.
+      </div>
+    </section>
+
+    <!-- Login Card -->
+    <section class="relative">
+      <div class="glass-card max-w-xl ml-auto">
+        <div class="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <h2 class="text-2xl sm:text-3xl font-bold tracking-tight">Secure Access</h2>
+            <p class="mt-2 text-sm sm:text-base text-white/65">Sign in to continue to your private workspace.</p>
+          </div>
+          <div class="hidden sm:flex items-center gap-2 text-[11px] text-cyan-100/70 bg-cyan-400/10 border border-cyan-300/15 px-3 py-1.5 rounded-full">
+            <span class="h-2 w-2 rounded-full bg-cyan-300"></span>
+            Encrypted session
+          </div>
+        </div>
+
+        <!-- Auth Mode Toggle -->
+        <div class="toggle-wrap mb-5" role="tablist" aria-label="Authentication mode">
+          <button type="button" class="toggle-btn toggle-btn--active" data-auth-mode="signin">Sign In</button>
+          <button type="button" class="toggle-btn" data-auth-mode="signup">Create Workspace</button>
+        </div>
+
+        <!-- Form -->
+        <form id="authForm" class="space-y-4" novalidate>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="form-group hidden" id="nameGroup">
+              <label class="form-label" for="fullName">Full name</label>
+              <input id="fullName" name="fullName" type="text" class="form-input" placeholder="Enter your full name" autocomplete="name" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="email">Email</label>
+              <input id="email" name="email" type="email" class="form-input" placeholder="name@example.com" autocomplete="email" />
+            </div>
+
+            <div class="form-group" id="confirmPasswordGroup" hidden>
+              <label class="form-label" for="confirmPassword">Confirm password</label>
+              <input id="confirmPassword" name="confirmPassword" type="password" class="form-input" placeholder="Repeat your password" autocomplete="new-password" />
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="password">Password</label>
+              <div class="relative">
+                <input id="password" name="password" type="password" class="form-input pr-12" placeholder="Enter your password" autocomplete="current-password" />
+                <button id="togglePassword" type="button" class="password-toggle" aria-label="Show or hide password">Show</button>
+              </div>
+              <div class="strength mt-2" aria-hidden="true">
+                <div class="strength__bar"><span id="strengthBar"></span></div>
+                <div id="strengthLabel" class="strength__label">Strength: —</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="form-group">
+              <label class="form-label" for="region">Region</label>
+              <select id="region" class="form-input form-select">
+                <option value="global">Global</option>
+                <option value="india" selected>India</option>
+                <option value="brazil">Brazil</option>
+                <option value="latam">LATAM</option>
+                <option value="apac">APAC</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label" for="language">Language</label>
+              <select id="language" class="form-input form-select">
+                <option value="en" selected>English</option>
+                <option value="hi">Hindi</option>
+                <option value="pt-BR">Português (Brazil)</option>
+                <option value="es">Español</option>
+                <option value="bn">বাংলা</option>
+                <option value="ur">اردو</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3 pt-1">
+            <label class="inline-flex items-center gap-2 text-sm text-white/70 cursor-pointer select-none">
+              <input id="rememberMe" type="checkbox" class="checkbox" />
+              Remember me
+            </label>
+            <button type="button" class="text-sm text-cyan-200 hover:text-cyan-100 transition-colors">
+              Forgot password?
+            </button>
+          </div>
+
+          <div class="pt-2 space-y-3">
+            <button id="submitAuth" type="submit" class="primary-btn w-full">Sign In</button>
+            <button type="button" class="secondary-btn w-full">
+              Sign in with Google
+            </button>
+          </div>
+
+          <div class="pt-2 text-xs sm:text-sm text-white/50 leading-6">
+            By continuing, you agree to the verification flow and premium workspace terms that will appear after login.
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+</main>
+
+  </div>  <!-- Minimal placeholder containers for next steps --><template id="disclaimerTemplate"></template> <template id="pricingTemplate"></template> <template id="paymentTemplate"></template> <template id="dashboardTemplate"></template>
+
+  <!-- External JS -->  <script src="script.js"></script></body>
+</html>
