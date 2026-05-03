@@ -7,7 +7,7 @@
     <meta name="theme-color" content="#05070d" />
     <meta
       name="description"
-      content="Neon Terra Cybernetics — a premium cybernetic SaaS workspace for secure access, verification flow, and command-center operations."
+      content="Neon Terra Cybernetics — premium cybernetic SaaS workspace with secure access, review workflow, and command-center dashboard."
     />
     <meta name="color-scheme" content="dark" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -47,7 +47,7 @@
 </header>
 
 <main id="app" class="main-shell">
-  <!-- LOGIN -->
+  <!-- LOGIN VIEW -->
   <section id="loginView" class="view view--login" aria-label="Login and workspace introduction">
     <div class="hero-copy">
       <div class="hero-badge">
@@ -170,7 +170,37 @@
     </section>
   </section>
 
-  <!-- PRICING -->
+  <!-- DISCLAIMER VIEW -->
+  <section id="disclaimerView" class="view hidden-view" aria-hidden="true" aria-label="Disclaimer and agreement">
+    <div class="status-panel glass-card">
+      <div class="status-panel__badge">Disclaimer</div>
+      <h2 class="view-title">Security & Compliance Notice</h2>
+      <p class="view-subtitle">
+        Please confirm the verification terms before continuing into the subscription flow.
+      </p>
+
+      <div class="policy-list">
+        <div class="policy-item">Manual review is required for all submissions.</div>
+        <div class="policy-item">Submitted information must be accurate and complete.</div>
+        <div class="policy-item">Suspicious or mismatched entries may be rejected.</div>
+        <div class="policy-item">All purchases are non-refundable.</div>
+        <div class="policy-item">Access is granted only after approval.</div>
+      </div>
+
+      <div class="check-list">
+        <label><input type="checkbox" id="agreeOne" class="checkbox" /> I understand the manual verification process.</label>
+        <label><input type="checkbox" id="agreeTwo" class="checkbox" /> I confirm my information is accurate.</label>
+        <label><input type="checkbox" id="agreeThree" class="checkbox" /> I accept the no-refund policy.</label>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="secondary-btn" id="cancelDisclaimer">Cancel</button>
+        <button type="button" class="primary-btn" id="agreeDisclaimer" disabled>I Agree & Proceed</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING VIEW -->
   <section id="pricingView" class="view hidden-view" aria-hidden="true" aria-label="Pricing and membership">
     <div class="view-header">
       <div>
@@ -262,7 +292,7 @@
     </div>
   </section>
 
-  <!-- PENDING -->
+  <!-- PENDING VIEW -->
   <section id="pendingView" class="view hidden-view" aria-hidden="true" aria-label="Pending verification">
     <div class="status-panel glass-card status-panel--pending">
       <div class="status-panel__badge">Pending Review</div>
@@ -284,7 +314,7 @@
     </div>
   </section>
 
-  <!-- REJECTED -->
+  <!-- REJECTED VIEW -->
   <section id="rejectedView" class="view hidden-view" aria-hidden="true" aria-label="Rejected request">
     <div class="status-panel glass-card status-panel--rejected">
       <div class="status-panel__badge status-panel__badge--red">Rejected</div>
@@ -294,7 +324,7 @@
     </div>
   </section>
 
-  <!-- DASHBOARD -->
+  <!-- DASHBOARD VIEW -->
   <section id="dashboardView" class="view hidden-view" aria-hidden="true" aria-label="Command center dashboard">
     <div class="dashboard-shell">
       <aside class="dashboard-sidebar glass-card">
@@ -383,7 +413,7 @@
     </div>
   </section>
 
-  <!-- ADMIN -->
+  <!-- ADMIN VIEW -->
   <section id="adminView" class="view hidden-view" aria-hidden="true" aria-label="Admin review center">
     <div class="admin-shell">
       <div class="admin-header glass-card">
@@ -422,19 +452,4 @@
           </thead>
           <tbody id="adminTableBody">
             <tr>
-              <td colspan="5" class="admin-empty">No requests yet.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-</main>
-
-<div id="modalRoot"></div>
-<div id="toastRoot" class="toast-root" aria-live="polite" aria-atomic="true"></div>
-
-<script src="script.js"></script>
-
-  </body>
-</html>
+              <td colspan="5" class="admin-empty
